@@ -30,7 +30,7 @@ so101_api = pytest.importorskip('so101_api')
 from so101_dashboard.api.server import create_app  # noqa: E402
 from so101_dashboard.storage.waypoint_storage import Waypoint  # noqa: E402
 
-from test_api import ALL_JOINTS, build_ctx  # noqa: E402
+from SO_100_ARM_CONTROL.so101_dashboard.test.test_api import ALL_JOINTS, build_ctx  # noqa: E402
 
 
 def _pumped(fn, timeout_ms=10000):
