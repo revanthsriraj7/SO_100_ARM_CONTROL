@@ -1,6 +1,0 @@
-source;share/so101_dashboard/hook/pythonpath.ps1
-source;share/so101_dashboard/hook/pythonpath.dsv
-source;share/so101_dashboard/hook/pythonpath.sh
-source;share/so101_dashboard/hook/ament_prefix_path.ps1
-source;share/so101_dashboard/hook/ament_prefix_path.dsv
-source;share/so101_dashboard/hook/ament_prefix_path.sh
