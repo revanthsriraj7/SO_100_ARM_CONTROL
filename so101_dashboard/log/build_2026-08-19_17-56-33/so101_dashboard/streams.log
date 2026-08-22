@@ -1,0 +1,194 @@
+[0.798s] Invoking command in '/home/revanth/so100_arm_ws/src/so101_dashboard': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/so101_dashboard build --build-base /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build install --record /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log --install-scripts $base/lib/so101_dashboard --single-version-externally-managed install_data
+[1.070s] running egg_info
+[1.070s] creating build/so101_dashboard/so101_dashboard.egg-info
+[1.070s] writing build/so101_dashboard/so101_dashboard.egg-info/PKG-INFO
+[1.071s] writing dependency_links to build/so101_dashboard/so101_dashboard.egg-info/dependency_links.txt
+[1.071s] writing entry points to build/so101_dashboard/so101_dashboard.egg-info/entry_points.txt
+[1.071s] writing requirements to build/so101_dashboard/so101_dashboard.egg-info/requires.txt
+[1.071s] writing top-level names to build/so101_dashboard/so101_dashboard.egg-info/top_level.txt
+[1.071s] writing manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+[1.073s] reading manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+[1.074s] writing manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+[1.074s] running build
+[1.074s] running build_py
+[1.074s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build
+[1.075s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib
+[1.075s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard
+[1.075s] copying so101_dashboard/main.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard
+[1.075s] copying so101_dashboard/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard
+[1.075s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.075s] copying so101_dashboard/widgets/control_panel.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.075s] copying so101_dashboard/widgets/telemetry_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.075s] copying so101_dashboard/widgets/rosbag_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.075s] copying so101_dashboard/widgets/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.075s] copying so101_dashboard/widgets/program_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.076s] copying so101_dashboard/widgets/trajectory_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.076s] copying so101_dashboard/widgets/joint_control_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.076s] copying so101_dashboard/widgets/status_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.076s] copying so101_dashboard/widgets/joint_table.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.076s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils
+[1.076s] copying so101_dashboard/utils/conversions.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils
+[1.077s] copying so101_dashboard/utils/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils
+[1.077s] copying so101_dashboard/utils/signals.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils
+[1.077s] copying so101_dashboard/utils/config_loader.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils
+[1.077s] copying so101_dashboard/utils/logging.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils
+[1.077s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+[1.077s] copying so101_dashboard/app/main_window.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+[1.077s] copying so101_dashboard/app/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+[1.078s] copying so101_dashboard/app/application.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+[1.078s] copying so101_dashboard/app/styles.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+[1.078s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting
+[1.078s] copying so101_dashboard/plotting/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting
+[1.078s] copying so101_dashboard/plotting/joint_plot.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting
+[1.078s] copying so101_dashboard/plotting/data_buffer.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting
+[1.079s] copying so101_dashboard/plotting/plot_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting
+[1.079s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.079s] copying so101_dashboard/robot/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.079s] copying so101_dashboard/robot/program_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.079s] copying so101_dashboard/robot/trajectory_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.079s] copying so101_dashboard/robot/robot_state.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.079s] copying so101_dashboard/robot/torque_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.079s] copying so101_dashboard/robot/waypoint_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.080s] copying so101_dashboard/robot/joint_limits.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.080s] copying so101_dashboard/robot/joint_control_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.080s] copying so101_dashboard/robot/kinematics.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.080s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording
+[1.080s] copying so101_dashboard/recording/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording
+[1.081s] copying so101_dashboard/recording/rosbag_recorder.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording
+[1.081s] copying so101_dashboard/recording/trajectory_recorder.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording
+[1.081s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.081s] copying so101_dashboard/ros/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.081s] copying so101_dashboard/ros/action_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.081s] copying so101_dashboard/ros/mock_robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.082s] copying so101_dashboard/ros/ros_node.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.082s] copying so101_dashboard/ros/trajectory_controller.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.082s] copying so101_dashboard/ros/robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.082s] copying so101_dashboard/ros/joint_state_subscriber.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.083s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage
+[1.083s] copying so101_dashboard/storage/program_storage.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage
+[1.083s] copying so101_dashboard/storage/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage
+[1.083s] copying so101_dashboard/storage/trajectory_storage.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage
+[1.083s] copying so101_dashboard/storage/waypoint_storage.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage
+[1.084s] running install
+[1.085s] running install_lib
+[1.086s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard
+[1.086s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.086s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/control_panel.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.086s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/telemetry_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.086s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/rosbag_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.086s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.086s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/program_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.086s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/trajectory_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/joint_control_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/status_widget.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/joint_table.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.087s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils/conversions.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils/signals.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils/config_loader.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/utils/logging.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/main.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard
+[1.087s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard
+[1.088s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+[1.088s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app/main_window.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+[1.088s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+[1.088s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app/application.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+[1.088s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app/styles.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+[1.088s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting
+[1.088s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting
+[1.088s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting/joint_plot.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting/data_buffer.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/plotting/plot_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting
+[1.089s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/program_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/trajectory_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/robot_state.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.089s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/torque_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/waypoint_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/joint_limits.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/joint_control_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/kinematics.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.090s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording/rosbag_recorder.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording
+[1.090s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/recording/trajectory_recorder.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording
+[1.091s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/action_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/mock_robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/ros_node.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/trajectory_controller.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/joint_state_subscriber.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.091s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage/program_storage.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage
+[1.091s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage/__init__.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage
+[1.092s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage/trajectory_storage.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage
+[1.092s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/storage/waypoint_storage.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage
+[1.092s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/control_panel.py to control_panel.cpython-310.pyc
+[1.093s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/telemetry_widget.py to telemetry_widget.cpython-310.pyc
+[1.094s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/rosbag_widget.py to rosbag_widget.cpython-310.pyc
+[1.095s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/__init__.py to __init__.cpython-310.pyc
+[1.095s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/program_widget.py to program_widget.cpython-310.pyc
+[1.099s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/trajectory_widget.py to trajectory_widget.cpython-310.pyc
+[1.100s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/joint_control_widget.py to joint_control_widget.cpython-310.pyc
+[1.101s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/status_widget.py to status_widget.cpython-310.pyc
+[1.102s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/joint_table.py to joint_table.cpython-310.pyc
+[1.102s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils/conversions.py to conversions.cpython-310.pyc
+[1.103s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils/__init__.py to __init__.cpython-310.pyc
+[1.103s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils/signals.py to signals.cpython-310.pyc
+[1.103s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils/config_loader.py to config_loader.cpython-310.pyc
+[1.104s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/utils/logging.py to logging.cpython-310.pyc
+[1.104s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/main.py to main.cpython-310.pyc
+[1.104s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/__init__.py to __init__.cpython-310.pyc
+[1.104s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app/main_window.py to main_window.cpython-310.pyc
+[1.105s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app/__init__.py to __init__.cpython-310.pyc
+[1.105s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app/application.py to application.cpython-310.pyc
+[1.106s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app/styles.py to styles.cpython-310.pyc
+[1.106s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting/__init__.py to __init__.cpython-310.pyc
+[1.106s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting/joint_plot.py to joint_plot.cpython-310.pyc
+[1.107s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting/data_buffer.py to data_buffer.cpython-310.pyc
+[1.107s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/plotting/plot_manager.py to plot_manager.cpython-310.pyc
+[1.108s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/__init__.py to __init__.cpython-310.pyc
+[1.108s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/program_manager.py to program_manager.cpython-310.pyc
+[1.111s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/trajectory_manager.py to trajectory_manager.cpython-310.pyc
+[1.112s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/robot_state.py to robot_state.cpython-310.pyc
+[1.113s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/torque_manager.py to torque_manager.cpython-310.pyc
+[1.114s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/waypoint_manager.py to waypoint_manager.cpython-310.pyc
+[1.115s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/joint_limits.py to joint_limits.cpython-310.pyc
+[1.115s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/joint_control_manager.py to joint_control_manager.cpython-310.pyc
+[1.116s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/kinematics.py to kinematics.cpython-310.pyc
+[1.117s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording/__init__.py to __init__.cpython-310.pyc
+[1.117s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording/rosbag_recorder.py to rosbag_recorder.cpython-310.pyc
+[1.118s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/recording/trajectory_recorder.py to trajectory_recorder.cpython-310.pyc
+[1.119s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/__init__.py to __init__.cpython-310.pyc
+[1.119s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/action_interface.py to action_interface.cpython-310.pyc
+[1.119s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/mock_robot_interface.py to mock_robot_interface.cpython-310.pyc
+[1.120s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/ros_node.py to ros_node.cpython-310.pyc
+[1.121s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/trajectory_controller.py to trajectory_controller.cpython-310.pyc
+[1.121s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/robot_interface.py to robot_interface.cpython-310.pyc
+[1.122s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/joint_state_subscriber.py to joint_state_subscriber.cpython-310.pyc
+[1.122s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage/program_storage.py to program_storage.cpython-310.pyc
+[1.123s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage/__init__.py to __init__.cpython-310.pyc
+[1.123s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage/trajectory_storage.py to trajectory_storage.cpython-310.pyc
+[1.123s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/storage/waypoint_storage.py to waypoint_storage.cpython-310.pyc
+[1.124s] running install_data
+[1.124s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/ament_index
+[1.124s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/ament_index/resource_index
+[1.124s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/ament_index/resource_index/packages
+[1.124s] copying resource/so101_dashboard -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/ament_index/resource_index/packages
+[1.124s] copying package.xml -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard
+[1.124s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/config
+[1.124s] copying config/home_position.yaml -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/config
+[1.124s] copying config/joint_limits.yaml -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/config
+[1.124s] copying config/config.yaml -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/config
+[1.125s] creating /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/launch
+[1.125s] copying launch/dashboard.launch.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/launch
+[1.125s] running install_egg_info
+[1.126s] Copying build/so101_dashboard/so101_dashboard.egg-info to /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard-0.1.0-py3.10.egg-info
+[1.127s] running install_scripts
+[1.147s] Installing dashboard script to /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/so101_dashboard
+[1.148s] writing list of installed files to '/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log'
+[1.176s] Invoked command in '/home/revanth/so100_arm_ws/src/so101_dashboard' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/so101_dashboard build --build-base /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build install --record /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log --install-scripts $base/lib/so101_dashboard --single-version-externally-managed install_data

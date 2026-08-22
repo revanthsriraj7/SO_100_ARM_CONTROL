@@ -1,0 +1,41 @@
+running egg_info
+writing build/so101_dashboard/so101_dashboard.egg-info/PKG-INFO
+writing dependency_links to build/so101_dashboard/so101_dashboard.egg-info/dependency_links.txt
+writing entry points to build/so101_dashboard/so101_dashboard.egg-info/entry_points.txt
+writing requirements to build/so101_dashboard/so101_dashboard.egg-info/requires.txt
+writing top-level names to build/so101_dashboard/so101_dashboard.egg-info/top_level.txt
+reading manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+writing manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+running build
+running build_py
+copying so101_dashboard/widgets/control_panel.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+copying so101_dashboard/app/application.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+copying so101_dashboard/robot/trajectory_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+copying so101_dashboard/robot/torque_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+copying so101_dashboard/ros/mock_robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+copying so101_dashboard/ros/ros_node.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+copying so101_dashboard/ros/robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+running install
+running install_lib
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/control_panel.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app/application.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/trajectory_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/torque_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/mock_robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/ros_node.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/control_panel.py to control_panel.cpython-310.pyc
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app/application.py to application.cpython-310.pyc
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/trajectory_manager.py to trajectory_manager.cpython-310.pyc
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/torque_manager.py to torque_manager.cpython-310.pyc
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/mock_robot_interface.py to mock_robot_interface.cpython-310.pyc
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/ros_node.py to ros_node.cpython-310.pyc
+byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/robot_interface.py to robot_interface.cpython-310.pyc
+running install_data
+copying config/config.yaml -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/config
+running install_egg_info
+removing '/home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard-0.1.0-py3.10.egg-info' (and everything under it)
+Copying build/so101_dashboard/so101_dashboard.egg-info to /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard-0.1.0-py3.10.egg-info
+running install_scripts
+Installing dashboard script to /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/so101_dashboard
+writing list of installed files to '/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log'

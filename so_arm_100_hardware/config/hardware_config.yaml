@@ -1,0 +1,9 @@
+so_arm_100_hardware:
+  ros__parameters:
+    use_serial: true
+    serial_port: "/dev/ttyACM0"
+    serial_baudrate: 1000000
+    servo_speed: 2400
+    servo_acceleration: 50
+    calibration_file: "$(find so_arm_100_hardware)/config/calibration.yaml"
+    control_mode: 0
