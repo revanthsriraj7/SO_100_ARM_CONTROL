@@ -1,0 +1,69 @@
+timestamp: '2026-08-18T00:00:00.000000'
+# Converted from a LeRobot-format calibration (id/drive_mode/homing_offset/
+# range_min/range_max), not this project's own calibrate_arm.py.
+#
+# LeRobot's calibration flow writes `homing_offset` into each servo's own
+# Homing_Offset EEPROM register (same physical register our own
+# read_pos_offset()/servo_position_offsets_ reads -- SMS_STS_OFS_L/H) as
+# part of write_calibration(), which always runs at the end of a
+# calibration pass. So the servo's raw Present_Position reads are already
+# offset-corrected in hardware, and range_min/range_max are captured in
+# that corrected space -- they map directly onto min.ticks/max.ticks here
+# with no further adjustment. drive_mode was 0 for every joint (no
+# inversion), matching this project's default servo_directions_ (all +1).
+#
+# Joint ID -> name mapping (matches servo_id = joint index + 1 in
+# so_arm_100_interface.cpp and this project's joint order):
+#   1 shoulder_pan  -> Shoulder_Rotation
+#   2 shoulder_lift -> Shoulder_Pitch
+#   3 elbow_flex    -> Elbow
+#   4 wrist_flex    -> Wrist_Pitch
+#   5 wrist_roll    -> Wrist_Roll
+#   6 gripper       -> Gripper
+#
+# "center" isn't used by load_calibration()/ticks_to_radians() (only
+# min.ticks and max.ticks are), it's carried along for readability -- set
+# to the midpoint of min/max.
+joints:
+  Shoulder_Rotation:
+    min:
+      ticks: 910
+    center:
+      ticks: 2189
+    max:
+      ticks: 3467
+  Shoulder_Pitch:
+    min:
+      ticks: 817
+    center:
+      ticks: 2050
+    max:
+      ticks: 3283
+  Elbow:
+    min:
+      ticks: 701
+    center:
+      ticks: 1884
+    max:
+      ticks: 3067
+  Wrist_Pitch:
+    min:
+      ticks: 828
+    center:
+      ticks: 2014
+    max:
+      ticks: 3200
+  Wrist_Roll:
+    min:
+      ticks: 0
+    center:
+      ticks: 2048
+    max:
+      ticks: 4095
+  Gripper:
+    min:
+      ticks: 1926
+    center:
+      ticks: 2678
+    max:
+      ticks: 3430

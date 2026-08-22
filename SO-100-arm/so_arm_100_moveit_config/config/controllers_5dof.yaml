@@ -1,0 +1,53 @@
+# /**/<node> wildcard keys instead of bare node names: gz.launch.py loads
+# this file into the sim's controller_manager, which runs namespaced under
+# /sim (see so_arm_100_5dof.gazebo.xacro) to coexist with a real
+# hardware.launch.py instance. A bare `controller_manager:` key only
+# matches a node named /controller_manager in the ROOT namespace -- under
+# /sim it silently matches nothing and every param falls back to its
+# default (or errors, for required ones like each controller's `type`).
+/**/controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: position_controllers/GripperActionController
+
+/**/arm_controller:
+  ros__parameters:
+    joints:
+      - Shoulder_Rotation
+      - Shoulder_Pitch
+      - Elbow
+      - Wrist_Pitch
+      - Wrist_Roll
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    constraints:
+      stopped_velocity_tolerance: 0.01
+      goal_time: 0.0
+      joint_trajectory_controller:
+        joint1:
+          trajectory: 0.05
+          goal: 0.03
+
+/**/gripper_controller:
+  ros__parameters:
+    joint: Gripper
+    interface_name: position
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
