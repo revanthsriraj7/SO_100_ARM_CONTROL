@@ -1,0 +1,3 @@
+[console_scripts]
+dashboard = so101_dashboard.main:main
+

@@ -1,0 +1,14 @@
+# Default HOME position, radians.
+# Matches the "home" group_state already defined in
+# so_arm_100_moveit_config/config/so_arm_100.srdf for the "arm" planning
+# group, so MOVE HOME agrees with what MoveIt already calls "home" on this
+# robot. Gripper isn't part of that SRDF group; 0.0 is a neutral default --
+# adjust to taste.
+
+home_position:
+  Shoulder_Rotation: 0.0
+  Shoulder_Pitch: -1.745
+  Elbow: 1.5
+  Wrist_Pitch: 1.25
+  Wrist_Roll: 1.5708
+  Gripper: 0.0

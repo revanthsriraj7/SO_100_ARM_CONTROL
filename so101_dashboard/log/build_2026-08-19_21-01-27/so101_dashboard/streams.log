@@ -1,0 +1,43 @@
+[0.770s] Invoking command in '/home/revanth/so100_arm_ws/src/so101_dashboard': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/so101_dashboard build --build-base /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build install --record /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log --install-scripts $base/lib/so101_dashboard --single-version-externally-managed install_data
+[1.037s] running egg_info
+[1.038s] writing build/so101_dashboard/so101_dashboard.egg-info/PKG-INFO
+[1.038s] writing dependency_links to build/so101_dashboard/so101_dashboard.egg-info/dependency_links.txt
+[1.038s] writing entry points to build/so101_dashboard/so101_dashboard.egg-info/entry_points.txt
+[1.038s] writing requirements to build/so101_dashboard/so101_dashboard.egg-info/requires.txt
+[1.038s] writing top-level names to build/so101_dashboard/so101_dashboard.egg-info/top_level.txt
+[1.041s] reading manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+[1.042s] writing manifest file 'build/so101_dashboard/so101_dashboard.egg-info/SOURCES.txt'
+[1.042s] running build
+[1.042s] running build_py
+[1.042s] copying so101_dashboard/widgets/control_panel.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets
+[1.043s] copying so101_dashboard/app/application.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app
+[1.043s] copying so101_dashboard/robot/trajectory_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.044s] copying so101_dashboard/robot/torque_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot
+[1.044s] copying so101_dashboard/ros/mock_robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.044s] copying so101_dashboard/ros/ros_node.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.044s] copying so101_dashboard/ros/robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros
+[1.046s] running install
+[1.046s] running install_lib
+[1.047s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/widgets/control_panel.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets
+[1.048s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/app/application.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app
+[1.048s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/trajectory_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.048s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/robot/torque_manager.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot
+[1.049s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/mock_robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.049s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/ros_node.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.049s] copying /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build/lib/so101_dashboard/ros/robot_interface.py -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros
+[1.050s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/widgets/control_panel.py to control_panel.cpython-310.pyc
+[1.051s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/app/application.py to application.cpython-310.pyc
+[1.052s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/trajectory_manager.py to trajectory_manager.cpython-310.pyc
+[1.053s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/robot/torque_manager.py to torque_manager.cpython-310.pyc
+[1.055s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/mock_robot_interface.py to mock_robot_interface.cpython-310.pyc
+[1.056s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/ros_node.py to ros_node.cpython-310.pyc
+[1.056s] byte-compiling /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard/ros/robot_interface.py to robot_interface.cpython-310.pyc
+[1.057s] running install_data
+[1.058s] copying config/config.yaml -> /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/share/so101_dashboard/config
+[1.058s] running install_egg_info
+[1.059s] removing '/home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard-0.1.0-py3.10.egg-info' (and everything under it)
+[1.060s] Copying build/so101_dashboard/so101_dashboard.egg-info to /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages/so101_dashboard-0.1.0-py3.10.egg-info
+[1.061s] running install_scripts
+[1.080s] Installing dashboard script to /home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/so101_dashboard
+[1.081s] writing list of installed files to '/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log'
+[1.107s] Invoked command in '/home/revanth/so100_arm_ws/src/so101_dashboard' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/revanth/so100_arm_ws/src/so101_dashboard/install/so101_dashboard/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/so101_dashboard build --build-base /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/build install --record /home/revanth/so100_arm_ws/src/so101_dashboard/build/so101_dashboard/install.log --install-scripts $base/lib/so101_dashboard --single-version-externally-managed install_data

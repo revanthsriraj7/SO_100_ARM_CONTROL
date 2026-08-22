@@ -1,0 +1,71 @@
+# so101_dashboard configuration.
+# All topic/service/action names live here -- nowhere else in the code
+# should hardcode a ROS name.
+
+robot:
+  joint_state_topic: /joint_states
+  controller_state_topic: /arm_controller/controller_state
+  trajectory_topic: /arm_controller/joint_trajectory
+  follow_joint_trajectory_action: /arm_controller/follow_joint_trajectory
+  gripper_command_action: /gripper_controller/gripper_cmd
+  torque_service: /toggle_torque
+  gripper_lock_service: /set_gripper_lock
+  controller_name: arm_controller
+  gripper_controller_name: gripper_controller
+  joint_names:
+    - Shoulder_Rotation
+    - Shoulder_Pitch
+    - Elbow
+    - Wrist_Pitch
+    - Wrist_Roll
+  gripper_joint_name: Gripper
+
+telemetry:
+  update_rate: 30.0          # Hz, GUI refresh rate (independent of ROS callback rate)
+  history_seconds: 30.0
+
+recording:
+  default_rate: 100.0        # Hz, trajectory recorder sampling rate
+
+motion:
+  default_velocity_scaling: 0.3
+  default_acceleration_scaling: 0.2
+  hold_trajectory_duration: 1.0     # seconds, time_from_start for the HOLD goal
+  gripper_open_position: 1.57       # rad, matches Gripper's max_position in joint_limits.yaml
+  gripper_closed_position: -0.1792  # rad, matches Gripper's min_position in joint_limits.yaml
+  gripper_action_duration: 1.0      # seconds, allowed for a Jaw Open/Close to settle
+  program_waypoint_duration: 3.0    # seconds, time_from_start for a program's waypoint moves
+  joint_control_stream_duration: 0.15    # seconds, time_from_start for each live-jog goal while dragging
+  joint_control_stream_interval_ms: 100  # min ms between live-jog goals sent while dragging
+  home_trajectory_duration: 4.0     # seconds, time_from_start for MOVE HOME
+  gripper_hold_max_effort: 50.0     # max_effort used when re-commanding gripper on HOLD
+
+safety:
+  joint_state_timeout: 0.5   # seconds; older than this => STALE
+  torque_service_timeout: 2.0
+  action_goal_timeout: 5.0
+
+storage:
+  waypoint_directory: data/waypoints
+  trajectory_directory: data/trajectories
+  rosbag_directory: data/bags
+  program_directory: data/programs
+
+rosbag:
+  default_topics:
+    - /joint_states
+    - /tf
+    - /tf_static
+    - /arm_controller/controller_state
+    - /arm_controller/joint_trajectory
+  available_topics:
+    - /joint_states
+    - /tf
+    - /tf_static
+    - /arm_controller/controller_state
+    - /arm_controller/joint_trajectory
+    - /arm_controller/follow_joint_trajectory/_action/feedback
+    - /arm_controller/follow_joint_trajectory/_action/status
+    - /feedback
+    - /command
+    - /dynamic_joint_states

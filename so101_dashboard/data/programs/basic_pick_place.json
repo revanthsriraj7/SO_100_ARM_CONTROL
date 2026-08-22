@@ -1,0 +1,154 @@
+{
+  "program_name": "basic_pick_place",
+  "version": 1,
+  "loop_count": 1,
+  "elements": [
+    {
+      "type": "waypoint",
+      "name": "home",
+      "joint_names": [
+        "Shoulder_Rotation",
+        "Shoulder_Pitch",
+        "Elbow",
+        "Wrist_Pitch",
+        "Wrist_Roll",
+        "Gripper"
+      ],
+      "joints": [
+        0.0782330201821677,
+        -1.5661943844312396,
+        1.4894953450369577,
+        0.5445631796994026,
+        -1.5324468070977555,
+        0.2346990605465031
+      ],
+      "timestamp": "2026-08-18T22:03:03.458089",
+      "velocity_scaling": 1.0,
+      "acceleration_scaling": 1.0
+    },
+    {
+      "type": "waypoint",
+      "name": "picking",
+      "joint_names": [
+        "Shoulder_Rotation",
+        "Shoulder_Pitch",
+        "Elbow",
+        "Wrist_Pitch",
+        "Wrist_Roll",
+        "Gripper"
+      ],
+      "joints": [
+        0.08436894333371027,
+        0.04908738521234052,
+        -0.1043106935762236,
+        1.6214176927951227,
+        -1.5201749607946704,
+        0.23316507975861744
+      ],
+      "timestamp": "2026-08-18T22:12:00.098637",
+      "velocity_scaling": 1.0,
+      "acceleration_scaling": 1.0
+    },
+    {
+      "type": "jaw_open"
+    },
+    {
+      "type": "waypoint",
+      "name": "pick",
+      "joint_names": [
+        "Shoulder_Rotation",
+        "Shoulder_Pitch",
+        "Elbow",
+        "Wrist_Pitch",
+        "Wrist_Roll",
+        "Gripper"
+      ],
+      "joints": [
+        0.08436894333371027,
+        0.15339807878856412,
+        0.26691265709210155,
+        1.1136700520049756,
+        -1.5201749607946704,
+        0.7807962210337913
+      ],
+      "timestamp": "2026-08-18T22:13:16.467581",
+      "velocity_scaling": 1.0,
+      "acceleration_scaling": 1.0
+    },
+    {
+      "type": "jaw_close"
+    },
+    {
+      "type": "waypoint",
+      "name": "up",
+      "joint_names": [
+        "Shoulder_Rotation",
+        "Shoulder_Pitch",
+        "Elbow",
+        "Wrist_Pitch",
+        "Wrist_Roll",
+        "Gripper"
+      ],
+      "joints": [
+        0.08436894333371027,
+        0.12578642460662257,
+        -0.12425244381873693,
+        1.6428934238255217,
+        -1.517106999218899,
+        0.0674951546669682
+      ],
+      "timestamp": "2026-08-18T22:16:22.840186",
+      "velocity_scaling": 1.0,
+      "acceleration_scaling": 1.0
+    },
+    {
+      "type": "waypoint",
+      "name": "place_up",
+      "joint_names": [
+        "Shoulder_Rotation",
+        "Shoulder_Pitch",
+        "Elbow",
+        "Wrist_Pitch",
+        "Wrist_Roll",
+        "Gripper"
+      ],
+      "joints": [
+        -0.4433204476989503,
+        0.12578642460662257,
+        -0.12118448224296566,
+        1.6428934238255217,
+        -1.517106999218899,
+        0.0674951546669682
+      ],
+      "timestamp": "2026-08-18T22:17:03.504396",
+      "velocity_scaling": 1.0,
+      "acceleration_scaling": 1.0
+    },
+    {
+      "type": "waypoint",
+      "name": "place",
+      "joint_names": [
+        "Shoulder_Rotation",
+        "Shoulder_Pitch",
+        "Elbow",
+        "Wrist_Pitch",
+        "Wrist_Roll",
+        "Gripper"
+      ],
+      "joints": [
+        -0.4433204476989503,
+        0.1487961364249072,
+        0.260776733940559,
+        1.1305438406717176,
+        -1.5155730184310134,
+        0.0674951546669682
+      ],
+      "timestamp": "2026-08-18T22:17:50.185392",
+      "velocity_scaling": 1.0,
+      "acceleration_scaling": 1.0
+    },
+    {
+      "type": "jaw_open"
+    }
+  ]
+}
