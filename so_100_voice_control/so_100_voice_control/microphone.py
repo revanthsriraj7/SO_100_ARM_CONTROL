@@ -28,8 +28,8 @@ import numpy as np
 import sounddevice as sd
 from scipy.io.wavfile import write
 
-from . import config
-from .utils import get_logger
+from ....so_100_voice_control.so_100_voice_control import config
+from ....so_100_voice_control.so_100_voice_control.utils import get_logger
 
 _log = get_logger('microphone')
 
