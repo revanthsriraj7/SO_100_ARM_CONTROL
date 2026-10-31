@@ -32,13 +32,17 @@ from __future__ import annotations
 
 import argparse
 import sys
+import threading
 import time
 from typing import Optional
 
 import numpy as np
 
 from . import config, voice_commands
+from .command_registry import get_registry
 from .fast_whisper import transcribe
+from .llm_agent import LlmAgent, started_program
+from .llm_parser import LlmParser
 from .microphone import BackgroundListener, save_wav
 from .robot_client import ApiClientError, SO101Client
 from .tts import speak
@@ -59,13 +63,16 @@ class VoiceControlNode:
         self.client = client or SO101Client()
         self.dry_run = config.DRY_RUN if dry_run is None else dry_run
         self._listener: Optional[BackgroundListener] = None
-        # Index into config.PROGRAM_SEQUENCE of the last bobbin-sequence
-        # program run (by name or via "next step") -- -1 means the
-        # sequence hasn't been started yet this session. Only advanced by
-        # actually running a step, so saying the same step's name twice
-        # doesn't skip anything, and "next step" always means "the one
-        # after whatever last ran".
+        # Which workflow sequence (commands/*.yaml) "next step" walks, and
+        # the index of the last step run in it (by name or via "next
+        # step") -- None/-1 means no sequence has been started yet this
+        # session. Only advanced by actually running a step, so saying
+        # the same step's name twice doesn't skip anything, and "next
+        # step" always means "the one after whatever last ran".
+        self._workflow: Optional[str] = None
         self._sequence_index = -1
+        self._llm = LlmParser() if config.LLM_ENABLED and not config.LLM_AGENT_ENABLED else None
+        self._agent = LlmAgent(self.client, self.dry_run) if config.LLM_ENABLED and config.LLM_AGENT_ENABLED else None
 
     # -- startup checks (Phase 7, steps 2-3) --
 
@@ -83,6 +90,13 @@ class VoiceControlNode:
         if not status.get('controller_active', False) and not status.get('mock_mode', False):
             _log.warning('[VOICE] Robot controller is not active yet -- commands may be rejected until it is.')
         return True
+
+    def warm_up_agent(self) -> None:
+        """Warm the LLM in the background so the first spoken command
+        isn't slow. No-op unless the agent is enabled (and not in dry run,
+        where the API may be absent)."""
+        if self._agent is not None:
+            threading.Thread(target=self._agent.warm_up, name='agent-warmup', daemon=True).start()
 
     # -- listen/execute cycles --
 
@@ -149,10 +163,37 @@ class VoiceControlNode:
 
     def _handle_transcript(self, text: str) -> None:
         command = voice_commands.parse_command(text)
+        if self._agent is not None:
+            # Agent mode: only the emergency stop skips the LLM; everything
+            # else is the model's call.
+            if command.action != voice_commands.ACTION_STOP_PROGRAM:
+                self._run_agent(text)
+                return
+        elif command.action == voice_commands.ACTION_UNKNOWN and self._llm is not None:
+            command = self._parse_with_llm(text)
         _log.info(f'[VOICE] Intent: {command.action}')
         if command.program:
             _log.info(f'[VOICE] Program: {command.program}')
         self._execute(command)
+
+    def _run_agent(self, text: str) -> None:
+        result = self._agent.run(text)
+        _log.info(f'[AGENT] reply: {result.reply}')
+        self._speak(result.reply)
+        program = started_program(result.calls)
+        if program and not self.dry_run:
+            self._monitor_program(program)
+
+    def _parse_with_llm(self, text: str) -> voice_commands.Command:
+        try:
+            programs = [p['name'] for p in self.client.get_programs()]
+            targets = [t['name'] for t in self.client.get_targets()]
+            st = self.client.get_state()
+            state = f"program {st.get('program', {}).get('name')} is {st.get('program', {}).get('state', 'IDLE')}"
+        except ApiClientError as exc:
+            _log.warning(f'[LLM] Could not load dashboard context: {exc.message}')
+            return voice_commands.Command(action=voice_commands.ACTION_UNKNOWN, raw_text=text)
+        return self._llm.parse(text, programs, targets, state, get_registry().descriptions)
 
     # -- dispatch --
 
@@ -190,6 +231,8 @@ class VoiceControlNode:
             self._call('Closing the gripper.', self.client.close_gripper)
         elif action == voice_commands.ACTION_GET_STATUS:
             self._report_status()
+        elif action == voice_commands.ACTION_MOVE_TARGET:
+            self._call(command.reply or f'Moving to {command.target}.', self.client.move_to_target, command.target)
         else:
             # Defensive: parse_command() should never produce anything
             # outside the whitelist above, but refuse rather than guess.
@@ -209,30 +252,32 @@ class VoiceControlNode:
             self._speak(f'Sorry, that failed: {exc.message}')
 
     def _next_step(self) -> None:
-        """ACTION_NEXT_STEP: run the bobbin-sequence program after
-        whichever one last ran (or the first one, if none has run yet
-        this session), so the four steps can be driven hands-free without
-        naming each one -- "navigate through" the sequence."""
-        sequence = config.PROGRAM_SEQUENCE
-        next_index = self._sequence_index + 1
-        if next_index >= len(sequence):
-            self._speak('That was the last step. Say "pick up the bobbin" to start over.')
+        """ACTION_NEXT_STEP: run the step after whichever one last ran in
+        the active workflow's sequence (or the first step of the default
+        workflow, if none has run yet), so a multi-step workflow can be
+        driven hands-free without naming each step."""
+        registry = get_registry()
+        workflow = self._workflow or registry.default_workflow()
+        if workflow is None:
+            self._speak('No step sequence is defined.')
             return
-        self._run_program(sequence[next_index], sequence_index=next_index)
+        sequence = registry.workflows[workflow].sequence
+        next_index = self._sequence_index + 1 if self._workflow else 0
+        if next_index >= len(sequence):
+            self._speak(f'That was the last step of {workflow}. Say the first step to start over.')
+            return
+        self._run_program(sequence[next_index])
 
-    def _run_program(self, program: str, sequence_index: Optional[int] = None) -> None:
-        """sequence_index is passed when this program is a step of
-        config.PROGRAM_SEQUENCE (whether reached by name or via "next
-        step") so _next_step() knows what comes after it; left None for
-        programs outside that sequence."""
-        if sequence_index is None and program in config.PROGRAM_SEQUENCE:
-            sequence_index = config.PROGRAM_SEQUENCE.index(program)
+    def _note_step(self, program: str) -> None:
+        loc = get_registry().locate(program)
+        if loc is not None:
+            self._workflow, self._sequence_index = loc
 
+    def _run_program(self, program: str) -> None:
         if self.dry_run:
             self._speak(f'Starting {self._spoken_name(program)}.')
             _log.info(f'[DRY RUN]\nWould execute: run_program({program!r})')
-            if sequence_index is not None:
-                self._sequence_index = sequence_index
+            self._note_step(program)
             return
 
         # Reuse the dashboard's own validation (program exists / not
@@ -248,8 +293,7 @@ class VoiceControlNode:
             self._speak(f'Could not start {self._spoken_name(program)}: {exc.message}')
             return
 
-        if sequence_index is not None:
-            self._sequence_index = sequence_index
+        self._note_step(program)
         _log.info(f'[API] {result.get("message", "Program started")}')
         self._monitor_program(program)
 
@@ -292,7 +336,7 @@ class VoiceControlNode:
 
     @staticmethod
     def _spoken_name(program: str) -> str:
-        return config.PROGRAM_SPOKEN_NAMES.get(program, program)
+        return get_registry().spoken_name(program)
 
 
 def _build_arg_parser() -> argparse.ArgumentParser:
@@ -330,6 +374,7 @@ def main(argv=None) -> int:
         _log.error('[VOICE] Dashboard API not reachable -- start so101_dashboard first. Exiting.')
         return 1
 
+    node.warm_up_agent()
     if args.text is not None or args.once:
         node.run_once(text=args.text)
         return 0

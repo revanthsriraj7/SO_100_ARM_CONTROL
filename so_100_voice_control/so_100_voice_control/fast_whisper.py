@@ -13,7 +13,7 @@ from typing import Optional, Union
 import numpy as np
 from faster_whisper import WhisperModel
 
-from ....so_100_voice_control.so_100_voice_control import config
+from . import config
 
 _model: Optional[WhisperModel] = None
 

@@ -45,10 +45,10 @@ class SO101Client:
 
     # -- transport --
 
-    def _request(self, method: str, path: str, **kwargs) -> Any:
+    def _request(self, method: str, path: str, timeout: Optional[float] = None, **kwargs) -> Any:
         url = f'{self.base_url}{path}'
         try:
-            resp = self._session.request(method, url, timeout=self.timeout, **kwargs)
+            resp = self._session.request(method, url, timeout=timeout or self.timeout, **kwargs)
         except requests.exceptions.RequestException as exc:
             raise ApiClientError(f'Could not reach dashboard API at {url}: {exc}') from exc
 
@@ -76,6 +76,20 @@ class SO101Client:
             return True
         except ApiClientError:
             return False
+
+    # -- generic access (used by the LLM agent) --
+
+    def get_openapi(self) -> Dict[str, Any]:
+        return self._request('GET', '/openapi.json')
+
+    def call(self, method: str, path: str, params: Optional[Dict[str, Any]] = None,
+             body: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None) -> Any:
+        """Call any dashboard endpoint. Moves with wait=true can take
+        longer than the default timeout, so callers may override it."""
+        kwargs: Dict[str, Any] = {'params': params or None}
+        if body is not None:
+            kwargs['json'] = body
+        return self._request(method.upper(), path, timeout=timeout, **kwargs)
 
     # -- robot state --
 
@@ -111,3 +125,11 @@ class SO101Client:
 
     def go_home(self) -> Dict[str, Any]:
         return self._request('POST', '/api/robot/home')
+
+    # -- targets --
+
+    def get_targets(self) -> List[Dict[str, Any]]:
+        return self._request('GET', '/api/targets')
+
+    def move_to_target(self, name: str) -> Dict[str, Any]:
+        return self._request('POST', f'/api/targets/{name}/move', json={'wait': True})

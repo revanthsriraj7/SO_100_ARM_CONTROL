@@ -1,0 +1,63 @@
+# Bobbin-winding workflow. To add another workflow, copy this file to e.g.
+# commands/my_task.yaml and edit it -- no Python changes needed.
+workflow: bobbin
+
+# Keys are the saved dashboard program names (GET /api/programs).
+programs:
+  pick_bobbin_up:
+    spoken: Pick bobbin up          # how TTS says it
+    description: Pick a bobbin up from the tray and load it on the winder.   # hint for the LLM
+    phrases:
+      - pick up the bobbin
+      - pick bobbin up
+      - pick up bobbin
+      - grab the bobbin
+      - start bobbin winding
+      - start winding
+      - wind a bobbin
+      - wind bobbin
+      - begin bobbin winding
+      - bobbin winding
+      - pick bobbin
+  turn_bobbin_on:
+    spoken: Turn bobbin on
+    description: Switch the bobbin winding machine on.
+    phrases:
+      - turn on the bobbin
+      - turn the bobbin on
+      - turn on the bobbin machine
+      - turn on the machine
+      - switch on the bobbin
+      - start the bobbin machine
+      - start the machine
+  turn_bobbin_off:
+    spoken: Turn bobbin off
+    description: Switch the bobbin winding machine off once winding is done.
+    phrases:
+      - turn off the bobbin
+      - turn the bobbin off
+      - turn off the bobbin machine
+      - turn off the machine
+      - switch off the bobbin
+      - stop the machine
+  remove_bobbin:
+    spoken: Remove bobbin
+    description: Take the finished bobbin off the winder.
+    phrases:
+      - remove the bobbin
+      - remove bobbin
+      - take out the bobbin
+      - take the bobbin out
+      - unload the bobbin
+
+# Order that "next step" walks through for this workflow (optional).
+sequence:
+  - pick_bobbin_up
+  - turn_bobbin_on
+  - turn_bobbin_off
+  - remove_bobbin
+
+# Optional: voice phrases that move to a saved dashboard target.
+# targets:
+#   placing:
+#     phrases: [go to the placing spot]

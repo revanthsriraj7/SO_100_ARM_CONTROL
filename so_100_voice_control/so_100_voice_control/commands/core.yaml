@@ -1,0 +1,37 @@
+# Generic robot commands that are not tied to any one workflow.
+# Each key is a built-in action (see voice_commands.py); the list under it
+# is the phrases that trigger it. Matching is whole-word and case/punctuation
+# insensitive, and the LONGEST matching phrase across all files wins, so the
+# order of entries does not matter.
+actions:
+  next_step:
+    - next step
+    - move to the next step
+    - continue
+    - next
+  stop_program:
+    - stop the robot
+    - stop the program
+    - abort
+    - stop
+  go_home:
+    - go home
+    - home the robot
+    - return home
+    - move home
+  jaw_open:
+    - open the gripper
+    - open gripper
+    - open the jaw
+    - open jaw
+  jaw_close:
+    - close the gripper
+    - close gripper
+    - close the jaw
+    - close jaw
+  get_status:
+    - what is the robot doing
+    - what's the robot doing
+    - robot status
+    - what's happening
+    - what is happening

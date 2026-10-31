@@ -50,10 +50,15 @@ Env vars:
                                 https://github.com/rhasspy/piper/blob/master/VOICES.md
                                 (~60MB per voice); defaults to
                                 ~/.local/share/piper-voices/en_US-lessac-medium.onnx.
-    SO101_PROGRAM_PICK_BOBBIN_UP / _TURN_BOBBIN_ON / _TURN_BOBBIN_OFF /
-    _REMOVE_BOBBIN -- override the saved dashboard program name each
-                       bobbin-sequence voice intent maps to, in case any
-                       of them is saved under a different name.
+    VOICE_COMMANDS_DIR   -- extra folder of command *.yaml files, loaded
+                             after the built-in commands/ (see
+                             command_registry.py for the file format).
+    VOICE_LLM_AGENT / LLM_AGENT_MAX_STEPS / LLM_AGENT_TIMEOUT /
+    LLM_BLOCKED_OPS      -- tool-calling agent over the dashboard API
+                             (llm_agent.py).
+    VOICE_LLM_ENABLED / OLLAMA_URL / LLM_MODEL / LLM_TIMEOUT /
+    LLM_HISTORY_TURNS    -- local Llama fallback for transcripts the
+                             phrase table does not recognize (llm_parser.py).
 """
 from __future__ import annotations
 
@@ -90,39 +95,35 @@ WHISPER_DEVICE: str = os.environ.get('WHISPER_DEVICE', 'cpu')
 WHISPER_COMPUTE_TYPE: str = os.environ.get('WHISPER_COMPUTE_TYPE', 'int8')
 WHISPER_LANGUAGE: str = os.environ.get('WHISPER_LANGUAGE', 'en')
 
-# -- program name mapping (voice intent -> actual saved program name) --
-# The bobbin workflow is four separate dashboard programs, run as
-# individual steps rather than one combined program -- each gets its own
-# voice intent (see voice_commands.py) so they can be run/navigated
-# independently, plus a "next step" intent that walks PROGRAM_SEQUENCE in
-# order without needing to name each one.
-PROGRAM_NAMES = {
-    'pick_bobbin_up': os.environ.get('SO101_PROGRAM_PICK_BOBBIN_UP', 'pick_bobbin_up'),
-    'turn_bobbin_on': os.environ.get('SO101_PROGRAM_TURN_BOBBIN_ON', 'turn_bobbin_on'),
-    'turn_bobbin_off': os.environ.get('SO101_PROGRAM_TURN_BOBBIN_OFF', 'turn_bobbin_off'),
-    'remove_bobbin': os.environ.get('SO101_PROGRAM_REMOVE_BOBBIN', 'remove_bobbin'),
-}
+# -- voice command definitions --
+# Built-in commands/*.yaml are always loaded; set this to an extra folder of
+# *.yaml files to add or extend commands without touching the package.
+COMMANDS_DIR = os.environ.get('VOICE_COMMANDS_DIR') or None
 
-# The order "next step" advances through -- matches how the four programs
-# are meant to run in sequence: pick the bobbin up, turn the winder on,
-# turn it off once wound, remove the finished bobbin.
-PROGRAM_SEQUENCE = [
-    PROGRAM_NAMES['pick_bobbin_up'],
-    PROGRAM_NAMES['turn_bobbin_on'],
-    PROGRAM_NAMES['turn_bobbin_off'],
-    PROGRAM_NAMES['remove_bobbin'],
-]
+# -- local LLM intent parser (Ollama) --
+# The phrase table in voice_commands.py is tried first; the LLM is only
+# consulted for transcripts it doesn't recognize.
+LLM_ENABLED: bool = _bool_env('VOICE_LLM_ENABLED', True)
+OLLAMA_URL: str = os.environ.get('OLLAMA_URL', 'http://127.0.0.1:11434')
+LLM_MODEL: str = os.environ.get('LLM_MODEL', 'llama3.2:3b')
+LLM_TIMEOUT_SEC: float = float(os.environ.get('LLM_TIMEOUT', '20.0'))
+LLM_HISTORY_TURNS: int = int(os.environ.get('LLM_HISTORY_TURNS', '3'))
 
-# Spoken form of each program, for TTS status reports ("Pick bobbin up
-# complete.") -- kept separate from PROGRAM_NAMES since the saved program
-# name (used in API calls) and how it should be *said* aren't always the
-# same string.
-PROGRAM_SPOKEN_NAMES = {
-    PROGRAM_NAMES['pick_bobbin_up']: 'Pick bobbin up',
-    PROGRAM_NAMES['turn_bobbin_on']: 'Turn bobbin on',
-    PROGRAM_NAMES['turn_bobbin_off']: 'Turn bobbin off',
-    PROGRAM_NAMES['remove_bobbin']: 'Remove bobbin',
-}
+# -- LLM agent (tool-calling over the dashboard's OpenAPI) --
+# OFF by default: on a CPU-only laptop it takes ~35 s per command (see
+# llm_agent.py), so the preset command list + fixed-action parser is used.
+# When on, anything the emergency fast path doesn't catch goes to an Ollama
+# model that is handed every dashboard endpoint as a tool and decides
+# what to call itself. Off = the old fixed-action parser.
+LLM_AGENT_ENABLED: bool = _bool_env('VOICE_LLM_AGENT', False)
+LLM_AGENT_MAX_STEPS: int = int(os.environ.get('LLM_AGENT_MAX_STEPS', '8'))
+LLM_AGENT_TIMEOUT_SEC: float = float(os.environ.get('LLM_AGENT_TIMEOUT', '60.0'))
+# Operations the model may never call, "METHOD /path-prefix" comma list.
+# Default: going limp (free move) and anything that deletes -- do those
+# by hand in the dashboard. Set empty ("") to allow everything.
+LLM_BLOCKED_OPS: str = os.environ.get(
+    'LLM_BLOCKED_OPS', 'POST /api/robot/torque/disable,DELETE /',
+)
 
 # -- runtime flags --
 DRY_RUN: bool = _bool_env('VOICE_DRY_RUN', False)
