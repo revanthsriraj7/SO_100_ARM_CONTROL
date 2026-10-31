@@ -50,6 +50,9 @@ storage:
   trajectory_directory: data/trajectories
   rosbag_directory: data/bags
   program_directory: data/programs
+  # Mirror of waypoints + programs kept outside the workspace, so a
+  # colcon build can't lose them. Restored on startup if missing.
+  backup_directory: ~/so100_waypoints
 
 api:
   enabled: true              # start the REST API alongside the dashboard

@@ -130,6 +130,22 @@ class CreateProgramRequest(BaseModel):
     name: str = Field(..., min_length=1, max_length=200)
 
 
+class RecordTargetRequest(BaseModel):
+    name: str = Field(..., min_length=1, max_length=200, description="Name for the new target. Records the arm's CURRENT pose (all joints + gripper).")
+
+
+class AddProgramElementRequest(BaseModel):
+    type: str = Field(..., description="'target' (move to a saved target), 'record_current_pose' (record the arm's current pose as a new waypoint step), 'jaw_open', 'jaw_close', or 'wait'.")
+    target_name: Optional[str] = Field(None, description="Required when type == 'target'.")
+    duration_sec: float = Field(1.0, ge=0, description="Only for type == 'wait'.")
+    index: Optional[int] = Field(None, description='Insert position; omit to append.')
+
+
+class EditResponse(BaseModel):
+    ok: bool = True
+    message: str = ''
+
+
 class AddTargetElementRequest(BaseModel):
     target_name: str
     index: Optional[int] = Field(None, description='Insert position; omit to append.')

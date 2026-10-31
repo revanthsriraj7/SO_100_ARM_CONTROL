@@ -22,8 +22,9 @@ from fastapi import APIRouter, Depends
 
 from ..context import ApiContext
 from ..deps import get_ctx
-from ..errors import InvalidRequestError, NotSupportedError, ProgramBusyError, ProgramNotFoundError
+from ..errors import InvalidRequestError, NotSupportedError, ProgramBusyError, ProgramNotFoundError, TargetNotFoundError
 from ..models import (
+    AddProgramElementRequest, CreateProgramRequest, EditResponse,
     ProgramDetail, ProgramElementResponse, ProgramSummary, RunProgramResponse, StopProgramResponse,
 )
 from ...robot.program_manager import ElementType, ExecutionState
@@ -108,6 +109,68 @@ def stop_program(ctx: ApiContext = Depends(get_ctx)) -> StopProgramResponse:
         pm = ctx.program_manager
         pm.stop()
         return StopProgramResponse(execution_state=pm.execution_state.name, message='Stop requested.')
+    return ctx.bridge.call_on_gui_thread(_do)
+
+
+def _select_for_edit(ctx: ApiContext, program_name: str):
+    pm = ctx.program_manager
+    if pm.is_running():
+        raise ProgramBusyError('Cannot edit programs while one is running.')
+    if program_name not in pm.program_names:
+        raise ProgramNotFoundError(program_name)
+    pm.select_program(program_name)
+    return pm
+
+
+@router.post('/api/programs', response_model=EditResponse, summary='Create a new empty program',
+             description='The new program becomes the active one. Autosaved to disk once it has elements.')
+def create_program(req: CreateProgramRequest, ctx: ApiContext = Depends(get_ctx)) -> EditResponse:
+    def _do() -> EditResponse:
+        pm = ctx.program_manager
+        if not pm.new_program(req.name):
+            raise ProgramBusyError('Cannot create a program while one is running.')
+        return EditResponse(message=f"Created program '{pm.active_name}'.")
+    return ctx.bridge.call_on_gui_thread(_do)
+
+
+@router.post(
+    '/api/programs/{program_name}/elements', response_model=EditResponse, summary='Add a step to a program',
+    description="Appends (or inserts at `index`) a step: type 'target' (move to a saved target), 'record_current_pose', 'jaw_open', 'jaw_close' or 'wait'.",
+)
+def add_program_element(program_name: str, req: AddProgramElementRequest, ctx: ApiContext = Depends(get_ctx)) -> EditResponse:
+    def _do() -> EditResponse:
+        pm = _select_for_edit(ctx, program_name)
+        before = len(pm.program.elements)
+        if req.type == 'target':
+            match = next((wp for wp in ctx.waypoint_manager.waypoints if wp.name == req.target_name), None)
+            if match is None:
+                raise TargetNotFoundError(str(req.target_name))
+            pm.add_existing_waypoint(match, req.index)
+        elif req.type == 'record_current_pose':
+            if not pm.add_waypoint(req.index):
+                raise InvalidRequestError('Cannot record the current pose (no joint data yet).')
+        elif req.type == 'jaw_open':
+            pm.add_jaw_open(req.index)
+        elif req.type == 'jaw_close':
+            pm.add_jaw_close(req.index)
+        elif req.type == 'wait':
+            pm.add_wait(req.index, req.duration_sec)
+        else:
+            raise InvalidRequestError(f"Unknown element type '{req.type}'.")
+        if len(pm.program.elements) == before:
+            raise InvalidRequestError('Step was not added.')
+        return EditResponse(message=f"Added {req.type} to '{program_name}' ({before + 1} steps).")
+    return ctx.bridge.call_on_gui_thread(_do)
+
+
+@router.delete('/api/programs/{program_name}/elements/{index}', response_model=EditResponse, summary='Delete a step from a program')
+def delete_program_element(program_name: str, index: int, ctx: ApiContext = Depends(get_ctx)) -> EditResponse:
+    def _do() -> EditResponse:
+        pm = _select_for_edit(ctx, program_name)
+        if not (0 <= index < len(pm.program.elements)):
+            raise InvalidRequestError(f'No step at index {index}.')
+        pm.delete_element(index)
+        return EditResponse(message=f"Deleted step {index} of '{program_name}'.")
     return ctx.bridge.call_on_gui_thread(_do)
 
 

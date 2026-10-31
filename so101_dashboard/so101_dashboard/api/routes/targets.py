@@ -15,7 +15,7 @@ from fastapi import APIRouter, Depends
 from ..context import ApiContext
 from ..deps import get_ctx
 from ..errors import InvalidRequestError, TargetNotFoundError
-from ..models import MoveResultResponse, MoveToTargetRequest, TargetDetail, TargetSummary
+from ..models import EditResponse, MoveResultResponse, MoveToTargetRequest, RecordTargetRequest, TargetDetail, TargetSummary
 from ...robot import kinematics
 
 router = APIRouter(prefix='/api/targets', tags=['targets'])
@@ -33,6 +33,37 @@ def list_targets(ctx: ApiContext = Depends(get_ctx)) -> List[TargetSummary]:
     def _read() -> List[TargetSummary]:
         return [TargetSummary(name=wp.name, joint_names=list(wp.joint_names)) for wp in ctx.waypoint_manager.waypoints]
     return ctx.bridge.call_on_gui_thread(_read)
+
+
+@router.post(
+    '', response_model=EditResponse, summary="Record the arm's current pose as a new target",
+    description='Same as the dashboard RECORD button. A target with the same name is overwritten. Autosaved to disk.',
+)
+def record_target(req: RecordTargetRequest, ctx: ApiContext = Depends(get_ctx)) -> EditResponse:
+    def _do() -> EditResponse:
+        wm = ctx.waypoint_manager
+        errors: list = []
+        wm.error_occurred.connect(errors.append)
+        try:
+            ok = wm.record(req.name)
+        finally:
+            wm.error_occurred.disconnect(errors.append)
+        if not ok:
+            raise InvalidRequestError(errors[0] if errors else 'Could not record target.')
+        # record() appends; collapse any older same-named entry so names stay unique.
+        names = [wp.name for wp in wm.waypoints]
+        if names.count(req.name) > 1:
+            wm.delete(names.index(req.name))
+        return EditResponse(message=f"Recorded target '{req.name}'.")
+    return ctx.bridge.call_on_gui_thread(_do)
+
+
+@router.delete('/{target_name}', response_model=EditResponse, summary='Delete a saved target')
+def delete_target(target_name: str, ctx: ApiContext = Depends(get_ctx)) -> EditResponse:
+    def _do() -> EditResponse:
+        ctx.waypoint_manager.delete(_find_index(ctx, target_name))
+        return EditResponse(message=f"Deleted target '{target_name}'.")
+    return ctx.bridge.call_on_gui_thread(_do)
 
 
 @router.get('/{target_name}', response_model=TargetDetail, summary='Get one target')

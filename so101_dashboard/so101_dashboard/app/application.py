@@ -13,6 +13,7 @@ from typing import Optional
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication
 
+from .autosave import LIBRARY_FILENAME, AutoSaver, restore_missing
 from .main_window import MainWindow
 from .styles import DARK_STYLESHEET
 from ..api.bridge import DashboardBridge
@@ -148,10 +149,26 @@ class Application:
             self._storage_config.get('rosbag_directory', 'data/bags'), package_root
         )
 
+        # colcon build wipes install/ (where these relative dirs land for
+        # the installed package), so bring back anything that only
+        # survives in the backup, then keep both in sync from here on.
+        backup_dir = os.path.expanduser(self._storage_config.get('backup_directory', '~/so100_waypoints'))
+        restore_missing(backup_dir, waypoint_dir, program_dir)
+        library_file = os.path.join(waypoint_dir, LIBRARY_FILENAME)
+        if os.path.exists(library_file):
+            try:
+                self._waypoint_manager.load(library_file)
+            except Exception as exc:  # noqa: BLE001
+                _log.warning(f'Could not load waypoint library {library_file}: {exc}')
+
         # Populate the PROGRAMS tab's tree with every program already saved
         # to disk, so multiple programs show up ready to switch between
         # rather than only whichever one is loaded manually.
         self._program_manager.load_all_from_directory(program_dir)
+
+        self._autosaver = AutoSaver(
+            self._waypoint_manager, self._program_manager, waypoint_dir, program_dir, backup_dir,
+        )
 
         self._main_window = MainWindow(
             self._robot_interface,
@@ -252,6 +269,7 @@ class Application:
         self._sigint_poke_timer.start(200)
 
     def _on_about_to_quit(self) -> None:
+        self._autosaver.flush()
         _log.info('Shutting down...')
         if self._api_server is not None:
             self._api_server.stop()
